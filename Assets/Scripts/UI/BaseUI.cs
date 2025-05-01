@@ -1,21 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseUI : MonoBehaviour
+public class BaseUI : MonoBehaviour
 {
-    protected UIManager uiManager;
-
-    public virtual void Init(UIManager _uiManager)
+    public virtual void SetUIShow()
     {
-        this.uiManager=_uiManager;
+        gameObject.SetActive(true);
     }
 
-    protected abstract UIState getUIState();
-
-    public void SetActive(UIState _uiState)
+    public virtual void SetUIHide()
     {
-        this.gameObject.SetActive(getUIState()==_uiState);
+        gameObject.SetActive(false);
     }
 
 }

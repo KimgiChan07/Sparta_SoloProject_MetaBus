@@ -5,14 +5,23 @@ using UnityEngine;
 
 public class UITrigger : MonoBehaviour
 {
-    public UIState targetState;
-    public UIManager uIManager;
+    public UIState uiState;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            uIManager.SetState(targetState);
+            Debug.Log(other.name);
+            UIManager.Instance.ShowUI(uiState);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log(other.name);
+            UIManager.Instance.HideUI(uiState);
         }
     }
 }

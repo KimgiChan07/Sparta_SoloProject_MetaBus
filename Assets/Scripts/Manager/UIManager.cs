@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,16 +13,47 @@ public enum UIState
 
 public class UIManager : MonoBehaviour
 {
-    EventUI eventUI;
-    NpcUI npcUI;
-    DesignUI designUI;
+    public static UIManager Instance{get; private set;}
     
-    public UIState currentState;
+    public EventUI[] eventUIs;
 
-
-    public void SetState(UIState state)
+    private void Awake()
     {
-        currentState = state;
-        eventUI.SetActive(currentState);
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.Log("UIManager가 인식이 안되었습니다.");
+        }
+    }
+
+    private void Start()
+    {
+        UIAllHide();
+    }
+
+    public void ShowUI(UIState state)
+    {
+        int index = (int)state;
+        if(index<0||index>=eventUIs.Length)return;
+
+        eventUIs[index].SetUIShow();
+    }
+
+    public void HideUI(UIState state)
+    {
+        int index = (int)state;
+        if(index<0||index>=eventUIs.Length)return;
+        eventUIs[index].SetUIHide();
+    }
+
+    public void UIAllHide()
+    {
+        for (int i = 0; i < eventUIs.Length; i++)
+        {
+            eventUIs[i].SetUIHide();
+        }
     }
 }
