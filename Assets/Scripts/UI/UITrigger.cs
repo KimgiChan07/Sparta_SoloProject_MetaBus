@@ -11,7 +11,6 @@ public class UITrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log(other.name);
             UIManager.Instance.ShowUI(uiState);
         }
     }
@@ -20,7 +19,6 @@ public class UITrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log(other.name);
             UIManager.Instance.HideUI(uiState);
         }
     }

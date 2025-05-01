@@ -7,11 +7,11 @@ public class PlayerController : BaseController
 {
     private Camera camera;
     
-    private GameManager gameManager;
+    private GameManager _gameManager;
 
-    public void Init(GameManager _gameManager)
+    public void Init(GameManager gameManager)
     {
-        this.gameManager = _gameManager;
+        this._gameManager = gameManager;
         camera = Camera.main;
     }
 

@@ -27,6 +27,16 @@ public class UIManager : MonoBehaviour
         {
             Debug.Log("UIManager가 인식이 안되었습니다.");
         }
+
+        for (int i = 0; i < eventUIs.Length; i++)
+        {
+            if (eventUIs[i] == null)
+            {
+                continue;
+            }
+
+            eventUIs[i].Init(this);
+        }
     }
 
     private void Start()
@@ -45,8 +55,13 @@ public class UIManager : MonoBehaviour
     public void HideUI(UIState state)
     {
         int index = (int)state;
-        if(index<0||index>=eventUIs.Length)return;
-        eventUIs[index].SetUIHide();
+
+
+        if (index >= 0 && index < eventUIs.Length && eventUIs[index] != null)
+        {
+            if(eventUIs[index].gameObject != null)
+                eventUIs[index].SetUIHide();
+        }
     }
 
     public void UIAllHide()
