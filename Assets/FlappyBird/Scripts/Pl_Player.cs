@@ -12,6 +12,9 @@ public class Pl_Player : MonoBehaviour
     public float flapFroce = 6f;
     public float forwardSpeed = 3f;
     public bool isDead = false;
+
+    public bool isplaying=false;
+    
     public float deathCooldown;
     public bool isFlap = false;
 
@@ -37,16 +40,22 @@ public class Pl_Player : MonoBehaviour
         }
     }
 
+    public void GetGameStart(bool _isplaying)
+    {
+        this.isplaying = _isplaying;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (isDead)
         {
+            isplaying = false;
             if (deathCooldown <= 0)
             {
                 if (Input.GetKeyDown(KeyCode.Space)||Input.GetMouseButtonDown(0))
                 {
-                   _plGameManager.Restart();
+                   _plGameManager.GameStart();
                 }
             }
             else
@@ -65,31 +74,38 @@ public class Pl_Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(isDead) return;
-        
-        Vector3 velocity = _rigidbody2D.velocity;
-        velocity.x = forwardSpeed;
-
-        if (isFlap)
+        if (isplaying)
         {
-            velocity.y += flapFroce;
-            isFlap = false;
-        }
-        _rigidbody2D.velocity = velocity;
+            if (isDead) return;
 
-        float angle = Mathf.Clamp((_rigidbody2D.velocity.y * 10f), -90, 90);
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+            Vector3 velocity = _rigidbody2D.velocity;
+            velocity.x = forwardSpeed;
+
+            if (isFlap)
+            {
+                velocity.y += flapFroce;
+                isFlap = false;
+            }
+
+            _rigidbody2D.velocity = velocity;
+
+            float angle = Mathf.Clamp((_rigidbody2D.velocity.y * 10f), -90, 90);
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(godMode) return;
-        if(isDead) return;
+        if (isplaying)
+        {
+            if (godMode) return;
+            if (isDead) return;
 
-        isDead = true;
-        deathCooldown = 1f;
-        animator.SetInteger(IsDie,1);
-        
-        _plGameManager.GameOver();
+            isDead = true;
+            deathCooldown = 1f;
+            animator.SetInteger(IsDie, 1);
+
+            _plGameManager.GameOver();
+        }
     }
 }

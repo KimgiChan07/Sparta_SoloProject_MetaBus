@@ -14,6 +14,11 @@ public class Pl_GameManager : MonoBehaviour
     
     private int currentScore=0;
 
+    private void Start()
+    {
+        Time.timeScale = 0;
+    }
+
     private void Awake()
     {
         _plGameManager = this;
@@ -22,11 +27,12 @@ public class Pl_GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        _plUIManager.SetRestart();
+        MiniGameManager.Instance.UpdateScore("FlappyBird", currentScore);
+        _plUIManager.Setstart();
         Debug.Log("GameOver");
     }
 
-    public void Restart()
+    public void GameStart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

@@ -80,7 +80,15 @@ public class TheStack : MonoBehaviour
             return;
         }
 
-        bestScore = PlayerPrefs.GetInt(BestScoreKey, 0);
+        if (MiniGameManager.Instance != null)
+        {
+            bestScore = MiniGameManager.Instance.GetBestScore("TheStack");
+        }
+        else
+        {
+            bestScore = 0;
+        }
+
         bestCombo = PlayerPrefs.GetInt(BestComboKey, 0);
 
         prevColor = GetRandomColor();
@@ -91,7 +99,6 @@ public class TheStack : MonoBehaviour
         SpawnBlock();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isGameOver) return;
@@ -308,8 +315,8 @@ public class TheStack : MonoBehaviour
         {
             bestScore = stackCount;
             bestCombo = maxCombo;
-
-            PlayerPrefs.SetInt(BestScoreKey, bestScore);
+            
+            MiniGameManager.Instance.UpdateScore("TheStack", bestScore);
             PlayerPrefs.SetInt(BestComboKey, bestCombo);
         }
     }

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public PlayerController player{get;private set;}
-    public BaseUI baseUI;
+    protected BaseUI baseUI;
     private void Awake()
     {
         Instance = this;

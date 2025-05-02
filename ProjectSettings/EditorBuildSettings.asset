@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/FlappyBird/Scenes/FlappyBird.unity
     guid: 6787ad6ffc37adb48aaf62a4331f830c
   - enabled: 1
-    path: Assets/TheStack/Scenes/SampleScene.unity
+    path: Assets/TheStack/Scenes/TheStack.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

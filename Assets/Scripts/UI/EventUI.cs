@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,8 @@ public class EventUI : BaseUI
     [SerializeField]private Button startButton;
     
     [SerializeField] private int sceneIndex;
+    
+    [SerializeField]private TextMeshProUGUI bestScoreText;
     
     public UIState uiState;
     
@@ -20,6 +23,8 @@ public class EventUI : BaseUI
         base.Init(_uiManager);
         
         startButton.onClick.AddListener(OnClickStartButton);
+
+        UpdateBestScore();
     }
 
     private void Awake()
@@ -33,6 +38,24 @@ public class EventUI : BaseUI
         GameManager.Instance.MiniGameStart(sceneIndex);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            MiniGameManager.Instance.ResetBestScore(uiState.ToString());
+            UpdateBestScore();
+        }
+    }
+
+    public void UpdateBestScore()
+    {
+        if (bestScoreText != null && MiniGameManager.Instance != null)
+        {
+            int bestScore= MiniGameManager.Instance.GetBestScore(uiState.ToString());
+            bestScoreText.text = bestScore.ToString();
+        }
+    }
+
     public override void SetUIShow()
     {
         base.SetUIShow(); 
@@ -42,6 +65,7 @@ public class EventUI : BaseUI
     public override void SetUIHide()
     {
         SetActive(false);
+        UpdateBestScore();
         base.SetUIHide();
     }
 
