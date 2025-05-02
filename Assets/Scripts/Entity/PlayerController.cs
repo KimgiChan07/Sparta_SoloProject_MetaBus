@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,17 @@ public class PlayerController : BaseController
     {
         this._gameManager = gameManager;
         camera = Camera.main;
+    }
+
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("PlayerPosX"))
+        {
+            float posX = PlayerPrefs.GetFloat("PlayerPosX");
+            float posY = PlayerPrefs.GetFloat("PlayerPosY");
+            float posZ = PlayerPrefs.GetFloat("PlayerPosZ");
+            transform.position = new Vector3(posX, posY, posZ);
+        }
     }
 
     void OnMove(InputValue value)
