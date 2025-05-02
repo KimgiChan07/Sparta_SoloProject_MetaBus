@@ -6,10 +6,11 @@ using UnityEngine;
 public class UITrigger : MonoBehaviour
 {
     public UIState uiState;
+    [SerializeField] string playerTag="Player";
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(playerTag))
         {
             UIManager.Instance.ShowUI(uiState);
         }
@@ -17,7 +18,7 @@ public class UITrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(playerTag))
         {
             UIManager.Instance.HideUI(uiState);
         }
