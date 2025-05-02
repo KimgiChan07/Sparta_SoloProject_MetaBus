@@ -20,6 +20,7 @@ public class PlayerController : BaseController
         moveDir=value.Get<Vector2>();
         moveDir = moveDir.normalized;
     }
+    
 
     void OnLook(InputValue value)
     {
