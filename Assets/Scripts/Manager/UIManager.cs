@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public enum UIState
@@ -50,17 +51,22 @@ public class UIManager : MonoBehaviour
         if(index<0||index>=eventUIs.Length)return;
 
         eventUIs[index].SetUIShow();
+        ImageManager.instance.SetState(state);
     }
 
     public void HideUI(UIState state)
     {
         int index = (int)state;
 
-
         if (index >= 0 && index < eventUIs.Length && eventUIs[index] != null)
         {
-            if(eventUIs[index].gameObject != null)
+            if (eventUIs[index].gameObject != null)
                 eventUIs[index].SetUIHide();
+        }
+
+        if (ImageManager.instance != null)
+        {
+            ImageManager.instance.StopImagesView();
         }
     }
 

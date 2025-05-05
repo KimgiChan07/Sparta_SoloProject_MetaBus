@@ -8,11 +8,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public PlayerController player { get; private set; }
+    private ImageManager imageManager;
     protected BaseUI baseUI;
 
     private void Awake()
     {
         Instance = this;
+        imageManager = GetComponentInChildren<ImageManager>();
         player = FindAnyObjectByType<PlayerController>();
         player.Init(this);
     }
@@ -55,4 +57,5 @@ public class GameManager : MonoBehaviour
             Debug.LogError("No player found");
         }
     }
+
 }

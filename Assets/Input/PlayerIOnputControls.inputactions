@@ -147,6 +147,74 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Images",
+            "id": "a247bfdb-ef42-48c2-8224-85660b7462da",
+            "actions": [
+                {
+                    "name": "Next",
+                    "type": "Button",
+                    "id": "f0499c29-bb56-4ace-afb8-1e4844654fb3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Previous",
+                    "type": "Button",
+                    "id": "098c8af5-eb19-4a44-80e0-f3ecca166bba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ViewChangeImage",
+                    "type": "Button",
+                    "id": "afa18b4d-a002-424b-8506-1e9c1d9df44e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "26152331-8023-45b0-b239-dd74ec9ae831",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2de45e93-3c7e-4835-b243-bff889c0c6d3",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Previous",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "805c1ceb-cbe7-4a44-9480-51a310b026c9",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ViewChangeImage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

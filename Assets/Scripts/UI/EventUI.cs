@@ -34,7 +34,6 @@ public class EventUI : BaseUI
 
     public void OnClickStartButton()
     {
-        Debug.Log("OnClickStartButton");
         GameManager.Instance.MiniGameStart(sceneIndex);
     }
 

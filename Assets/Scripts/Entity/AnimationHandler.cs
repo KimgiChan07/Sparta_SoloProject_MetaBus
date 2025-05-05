@@ -15,7 +15,7 @@ public class AnimationHandler : MonoBehaviour
     private bool isSleepingTriggered = false;
     private bool isMoving = false;
 
-    protected Animator animator;
+    public Animator animator;
     protected void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -52,6 +52,7 @@ public class AnimationHandler : MonoBehaviour
         {
             playerStopTimer = 0f;
         }
+
     }
 
     public void Sleep()
@@ -65,5 +66,17 @@ public class AnimationHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         animator.SetBool(IsSleeping, true);
+    }
+
+    public bool IsSleepingAnim()
+    {
+        if (animator.GetBool(IsSleeping))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
