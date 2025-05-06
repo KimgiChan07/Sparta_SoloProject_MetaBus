@@ -1,30 +1,84 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FollowCamera : MonoBehaviour
 {
-    public Transform target;
-
-    private float offsetX;
-    private float offsetY;
-    
-    // Start is called before the first frame update
-    void Start()
+    [System.Serializable]
+    public class CameraArea
     {
-        if (target == null) return;
-        
-        offsetX = transform.position.x - target.position.x; 
-        offsetY =  transform.position.y - target.position.y;
+        [SerializeField] private string areaName;
+        [SerializeField] private Rect bounds;
+
+        public Rect Bounds => bounds;
+        public Vector2 center => bounds.center;
+        public Vector2 mapSize => bounds.size;
     }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private List<CameraArea> cameraAreas;
+
+    [SerializeField] private Transform cameraTarget;
+    [SerializeField] private Vector3 cameraPosition;
+
+    [SerializeField] private float cameraMoveSpeed;
+
+    private float width;
+    private float height;
+    private CameraArea currentArea;
+
+    void Start()
     {
-        if (target == null) return;
-        Vector3 pos = transform.position;
-        pos.x = target.position.x + offsetX;
-        pos.y = target.position.y + offsetY;
-        transform.position = pos;
+        if (cameraTarget == null)
+            cameraTarget = GameObject.Find("Player").GetComponent<Transform>();
+        height = Camera.main.orthographicSize;
+        width = height * Screen.width / Screen.height;
+    }
+
+    void FixedUpdate()
+    {
+        currentArea = GetCurrentArea();
+        CameraLimitArea();
+    }
+
+    CameraArea GetCurrentArea()
+    {
+        foreach (var area in cameraAreas)
+        {
+            if (area.Bounds.Contains(cameraTarget.position))
+                return area;
+        }
+
+        return null;
+    }
+
+    void CameraLimitArea()
+    {
+        if(cameraTarget == null)return;
+        
+        transform.position = Vector3.Lerp(transform.position,
+            cameraTarget.position + cameraPosition,
+            cameraMoveSpeed * Time.deltaTime);
+        float clampX = Mathf.Clamp(transform.position.x,
+            currentArea.Bounds.xMin+width,
+            currentArea.Bounds.xMax-width);
+        float clampY = Mathf.Clamp(transform.position.y,
+            currentArea.Bounds.yMin+height,
+            currentArea.Bounds.yMax-height);
+
+        transform.position = new Vector3(clampX, clampY, -10f);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        if (cameraTarget != null)
+        {
+            foreach (var area in cameraAreas)
+            {
+                Gizmos.DrawWireCube(area.center, area.mapSize);
+            }   
+        }
     }
 }
