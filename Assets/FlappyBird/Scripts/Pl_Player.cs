@@ -21,11 +21,13 @@ public class Pl_Player : MonoBehaviour
     public bool godMode = false;
     
     Pl_GameManager _plGameManager;
+    [SerializeField]private Pl_UIManager _plUiManager;
     
     // Start is called before the first frame update
     void Start()
     {
         _plGameManager = Pl_GameManager.Instance;
+        
         animator = GetComponentInChildren<Animator>();
         _rigidbody2D=  GetComponent<Rigidbody2D>();
 
@@ -50,6 +52,7 @@ public class Pl_Player : MonoBehaviour
     {
         if (isDead)
         {
+            _plUiManager.SetGameOver();
             isplaying = false;
             if (deathCooldown <= 0)
             {
