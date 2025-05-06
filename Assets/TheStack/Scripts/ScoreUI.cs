@@ -21,7 +21,6 @@ public class ScoreUI : The_BaseUI
         return The_UIState.Score;
     }
 
-
     public override void Init(The_UIManager theUIManager)
     {
         base.Init(theUIManager);

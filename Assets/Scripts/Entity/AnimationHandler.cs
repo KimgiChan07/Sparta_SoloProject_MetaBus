@@ -67,16 +67,4 @@ public class AnimationHandler : MonoBehaviour
         yield return new WaitForSeconds(1f);
         animator.SetBool(IsSleeping, true);
     }
-
-    public bool IsSleepingAnim()
-    {
-        if (animator.GetBool(IsSleeping))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 }
