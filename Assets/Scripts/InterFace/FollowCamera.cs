@@ -56,18 +56,27 @@ public class FollowCamera : MonoBehaviour
     void CameraLimitArea()
     {
         if(cameraTarget == null)return;
-        
+
+        Vector3 targetPos = cameraTarget.position + cameraPosition;
         transform.position = Vector3.Lerp(transform.position,
             cameraTarget.position + cameraPosition,
             cameraMoveSpeed * Time.deltaTime);
-        float clampX = Mathf.Clamp(transform.position.x,
-            currentArea.Bounds.xMin+width,
-            currentArea.Bounds.xMax-width);
-        float clampY = Mathf.Clamp(transform.position.y,
-            currentArea.Bounds.yMin+height,
-            currentArea.Bounds.yMax-height);
 
-        transform.position = new Vector3(clampX, clampY, -10f);
+        if (currentArea != null)
+        {
+            float clampX = Mathf.Clamp(transform.position.x,
+                currentArea.Bounds.xMin + width,
+                currentArea.Bounds.xMax - width);
+            float clampY = Mathf.Clamp(transform.position.y,
+                currentArea.Bounds.yMin + height,
+                currentArea.Bounds.yMax - height);
+
+            transform.position = new Vector3(clampX, clampY, -10f);
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
+        }
     }
 
     private void OnDrawGizmos()
