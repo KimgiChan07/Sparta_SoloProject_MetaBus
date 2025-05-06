@@ -21,8 +21,14 @@ public class EventUI : BaseUI
     public override void Init(UIManager _uiManager)
     {
         base.Init(_uiManager);
-        
-        startButton.onClick.AddListener(OnClickStartButton);
+        if (startButton != null)
+        {
+            startButton.onClick.AddListener(OnClickStartButton);
+        }
+        else
+        {
+            return;
+        }
 
         UpdateBestScore();
     }
@@ -53,6 +59,10 @@ public class EventUI : BaseUI
             int bestScore= MiniGameManager.Instance.GetBestScore(uiState.ToString());
             bestScoreText.text = bestScore.ToString();
         }
+        else
+        {
+            return;
+        }
     }
 
     public override void SetUIShow()
@@ -75,6 +85,10 @@ public class EventUI : BaseUI
         {
             if (child != null && child != this.transform && child.gameObject != null)
                 child.gameObject.SetActive(_isActive);
+            else
+            {
+                return;
+            }
         }
     }
 }
