@@ -26,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 500, y: 100}
   m_MaxSize: {x: 40480, y: 16192}
   vertical: 0
-  controlID: 37975
+  controlID: 40776
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 37976
+  controlID: 40727
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -695,7 +695,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       floating: 0
       collapsed: 0
-      displayed: 0
+      displayed: 1
       snapOffset: {x: 48, y: 48}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
@@ -754,9 +754,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 18.561626, y: -8.652403, z: -0.35909498}
+    m_Target: {x: 22.104424, y: -14.261795, z: -0.19976702}
     speed: 2
-    m_Value: {x: 18.561626, y: -8.652403, z: -0.35909498}
+    m_Value: {x: 22.104424, y: -14.261795, z: -0.19976702}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -806,9 +806,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 23.106758
+    m_Target: 9.726982
     speed: 2
-    m_Value: 23.106758
+    m_Value: 9.726982
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -857,7 +857,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 37977
+  controlID: 40728
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1007,9 +1007,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 609b0000
-      m_LastClickedID: 39776
-      m_ExpandedIDs: c49dffff3abdffff64c8ffff7ac9ffff34ceffffe6faffff8e660000006700001c670000266700004c67000000680000ea7c0000127d0000808000009680000014810000c2810000ce810000e48100002a8700009e870000b6870000e09a00008a9c0000
+      m_SelectedIDs: c6d7feff
+      m_LastClickedID: -75834
+      m_ExpandedIDs: c49dffff3abdffff64c8ffff7ac9ffff34ceffffe6faffff8e660000006700001c670000266700004c67000000680000ea7c0000127d0000808000009680000014810000c2810000ce810000e48100002a8700009e870000b6870000e09a00006a9b0000a89b00008a9c0000c29c0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1177,7 +1177,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Entity
+    - Assets/0x72_DungeonTilesetII_v1.711/frames
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1185,16 +1185,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/Entity
+  - Assets/0x72_DungeonTilesetII_v1.711/frames
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\thtld\Desktop\Sparta_Unity\Sparta_SoloProject_MetaBus
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 6a990000
-    m_LastClickedID: 39274
-    m_ExpandedIDs: 00000000e2690000e4690000e66900001c6a000000ca9a3b
+    m_SelectedIDs: 06d30000
+    m_LastClickedID: 54022
+    m_ExpandedIDs: 00000000e2690000e4690000e6690000fc6900001c6a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1247,8 +1247,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 609b0000
-    m_LastClickedInstanceID: 39776
+    m_SelectedInstanceIDs: c6d7feff
+    m_LastClickedInstanceID: -75834
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000012a00000667a00001287000010ad00009a6e0000000000009663000038690000fe620000f8650000ba6b00008c6e0000646f000026680000d69d0000fad20000
     m_RenameOverlay:
@@ -1274,7 +1274,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 300}
     m_GridSize: 16
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 185
