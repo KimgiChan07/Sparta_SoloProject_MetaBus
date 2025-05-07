@@ -10,6 +10,7 @@ public enum UIState
     FlappyBird,
     TheStack,
     Secret,
+    Warp
 }
 
 public class UIManager : MonoBehaviour

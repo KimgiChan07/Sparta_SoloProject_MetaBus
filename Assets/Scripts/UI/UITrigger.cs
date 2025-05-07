@@ -7,6 +7,12 @@ public class UITrigger : MonoBehaviour
 {
     public UIState uiState;
     [SerializeField] string playerTag="Player";
+    [SerializeField] private List<GameObject> warpObject;
+
+    private void Awake()
+    {
+        
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
